@@ -148,7 +148,7 @@ class TambahPembersihActivity : AppCompatActivity() {
                         mDatabase.child(dataId!!).setValue(uploadData)
                             dialog.dismiss()
                             Toast.makeText(applicationContext, "Successfully Uploaded :)", Toast.LENGTH_LONG).show()
-                            fm.popBackStack()
+                            finish()
                     }
                 }
 

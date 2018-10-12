@@ -5,14 +5,16 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.example.wahyupermadi.pembersihac.R
+import com.example.wahyupermadi.pembersihac.view.user.UserActivity
 import com.google.firebase.auth.FirebaseAuth
-import org.jetbrains.anko.startActivity
 
 class SplashScreen : AppCompatActivity() {
     var firebaseAuth = FirebaseAuth.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
+
+        supportActionBar?.hide()
     }
 
     override fun onStart() {

@@ -120,6 +120,7 @@ class TambahProdukActivity : AppCompatActivity(), TambahContract.View {
 
     override fun hideProgressBar() {
         dialog.hide()
+        finish()
     }
 
     override fun showProgressBar() {

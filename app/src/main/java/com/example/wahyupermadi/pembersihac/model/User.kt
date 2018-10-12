@@ -13,6 +13,7 @@ class User() : Parcelable{
     var image : String? = null
     var lng : String? = null
     var lat : String? = null
+    var alamat : String? = null
 
     constructor(parcel: Parcel) : this() {
         name = parcel.readString()
@@ -22,10 +23,11 @@ class User() : Parcelable{
         image = parcel.readString()
         lng = parcel.readString()
         lat = parcel.readString()
+        alamat = parcel.readString()
     }
 
 
-    constructor(image: String?, name : String?, email : String?, phone : String?, uid : String?, lng : String, lat :String) : this() {
+    constructor(image: String?, name : String?, email : String?, phone : String?, uid : String?, lng : String, lat :String, alamat : String) : this() {
         this.image = image
         this.name = name
         this.email = email
@@ -33,6 +35,7 @@ class User() : Parcelable{
         this.uid = uid
         this.lat = lat
         this.lng = lng
+        this.alamat = alamat
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -43,6 +46,7 @@ class User() : Parcelable{
         parcel.writeString(image)
         parcel.writeString(lng)
         parcel.writeString(lat)
+        parcel.writeString(alamat)
     }
 
     override fun describeContents(): Int {

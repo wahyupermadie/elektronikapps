@@ -1,5 +1,6 @@
 package com.example.wahyupermadi.pembersihac
 
+import android.app.Activity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -22,6 +23,8 @@ import android.text.TextUtils
 import com.example.wahyupermadi.pembersihac.model.User
 import com.example.wahyupermadi.pembersihac.view.MainActivity
 import com.google.android.gms.tasks.OnCompleteListener
+import org.jetbrains.anko.ctx
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 class VerifyActivity : AppCompatActivity() {
@@ -81,13 +84,15 @@ class VerifyActivity : AppCompatActivity() {
                     override fun onComplete(task: Task<AuthResult>) {
                         if(task.isSuccessful){
                             val userUid = firebaseAuth.currentUser?.uid
-                            val intent = Intent(applicationContext, MainActivity::class.java)
-
-                            val user = User("",name, email, phone, userUid,"","")
+                            val user = User("",name, email, phone, userUid,"","","")
                             mDatabase?.child(userUid!!)?.setValue(user)
                             progressbar.visibility = View.GONE
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                            startActivity(intent)
+
+                            startActivity<MainActivity>()
+                            finish()
+//                            val intent = Intent(ctx, MainActivity::class.java)
+//                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+//                            startActivity(intent)
                         }else{
                             toast("register error")
                         }
